@@ -1,0 +1,24 @@
+.treeToggle {
+  cursor: pointer;
+  margin-right: 5px;
+}
+
+.treeToggle.collapsed:before {
+  content: '►';
+}
+
+.treeToggle.expanded:before {
+  content: '▼';
+}
+
+.treeLabel {
+  font-weight: bold;
+}
+
+.treeChildren {
+  margin-left: 20px;
+}
+
+button {
+  margin-left: 5px;
+}
