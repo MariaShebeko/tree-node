@@ -6,6 +6,7 @@ import { fetchTree } from "../../services/nodeApi";
 type TreeData = TreeNodeData[];
 
 const Tree: React.FC = () => {
+  console.log("TREE RENDER");
   const [treeData, setTreeData] = useState<TreeData>([]);
 
   useEffect(() => {
@@ -15,7 +16,7 @@ const Tree: React.FC = () => {
   return (
     <div>
       {treeData.map((node) => (
-        <TreeNode key={node.id} data={node} />
+        <TreeNode key={node.id} node={node} />
       ))}
     </div>
   );
