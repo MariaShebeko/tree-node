@@ -1,9 +1,7 @@
 import React, { useState } from "react";
-import { deleteNode } from "../../services/nodeApi";
-import s from "./TreeNode.module.css";
-
 import { Modal } from "../Modal";
 import { AddNodeForm } from "../AddNodeForm";
+import s from "./TreeNode.module.css";
 
 export type TreeNodeData = {
   id: number;
@@ -13,14 +11,21 @@ export type TreeNodeData = {
 
 type TreeNodeProps = {
   node: TreeNodeData;
+  deleteNode: (id: number) => void;
+  addNode: (parentId: number, name: string) => void;
+  updateNode: (id: number, name: string) => void;
 };
 
-const TreeNode: React.FC<TreeNodeProps> = ({ node }) => {
+const TreeNode: React.FC<TreeNodeProps> = ({
+  node,
+  deleteNode,
+  addNode,
+  updateNode,
+}) => {
   const { id, name, children } = node;
   const [isExpanded, setIsExpanded] = useState<boolean>(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isEditing, setIsEditing] = useState(false);
-  console.log("IS_EDITING", isEditing);
 
   const handleToggle = () => {
     setIsExpanded(!isExpanded);
@@ -78,7 +83,15 @@ const TreeNode: React.FC<TreeNodeProps> = ({ node }) => {
       {isExpanded && (
         <div className={s.treeChildren}>
           {children &&
-            children.map((child) => <TreeNode key={child.id} node={child} />)}
+            children.map((child) => (
+              <TreeNode
+                key={child.id}
+                node={child}
+                deleteNode={deleteNode}
+                addNode={addNode}
+                updateNode={updateNode}
+              />
+            ))}
         </div>
       )}
 
@@ -93,6 +106,8 @@ const TreeNode: React.FC<TreeNodeProps> = ({ node }) => {
             onClose={() => setIsModalOpen(false)}
             isEditing={isEditing}
             nodeName={name}
+            addNode={addNode}
+            updateNode={updateNode}
           />
         </Modal>
       )}

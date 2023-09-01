@@ -1,11 +1,12 @@
 import React, { useState } from "react";
-import { addNode, updateNode } from "../../services/nodeApi";
 
 interface IAddNodeForm {
   id: number;
   onClose: () => void;
   isEditing: boolean;
   nodeName: string;
+  addNode: (parentId: number, name: string) => void;
+  updateNode: (id: number, name: string) => void;
 }
 
 export const AddNodeForm: React.FC<IAddNodeForm> = ({
@@ -13,8 +14,10 @@ export const AddNodeForm: React.FC<IAddNodeForm> = ({
   onClose,
   isEditing,
   nodeName,
+  addNode,
+  updateNode,
 }) => {
-  console.log("ID IN FORM", id);
+  console.log("FORM RENDER");
 
   const [name, setName] = useState<string>(isEditing === true ? nodeName : "");
 
@@ -25,6 +28,7 @@ export const AddNodeForm: React.FC<IAddNodeForm> = ({
       addNode(id, name);
     }
     updateNode(id, name);
+
     onClose();
   };
 
