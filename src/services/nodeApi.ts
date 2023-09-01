@@ -1,4 +1,8 @@
 import axios from "axios";
+import {
+  successNotification,
+  errorNotification,
+} from "../helpers/notification";
 
 // axios.defaults.baseURL = "https://test.vmarmysh.com/api.user.tree.";
 
@@ -7,11 +11,6 @@ export const fetchTree = async () => {
     const response = await axios.post(
       "https://test.vmarmysh.com/api.user.tree.get?treeName=maria"
     );
-
-    // console.log(
-    //   "🚀 ~ file: nodes-api.ts:10 ~ fetchTree ~ response:",
-    //   response.data
-    // );
 
     return response.data;
   } catch (error) {
@@ -24,6 +23,7 @@ export const addNode = async (parentNodeId: number, nodeName: string) => {
     const response = await axios.post(
       `https://test.vmarmysh.com/api.user.tree.node.create?treeName=maria&parentNodeId=${parentNodeId}&nodeName=${nodeName}`
     );
+    successNotification(`Node with the name: ${nodeName} has been added.`);
     return response.data;
   } catch (error) {
     console.log("error", error);
@@ -36,8 +36,8 @@ export const deleteNode = async (nodeId: number) => {
       `https://test.vmarmysh.com/api.user.tree.node.delete?treeName=maria&nodeId=${nodeId}`
     );
     return response.data;
-  } catch (error) {
-    console.log("error", error);
+  } catch (error: any) {
+    errorNotification(error.response.data.data.message);
   }
 };
 

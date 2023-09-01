@@ -57,7 +57,7 @@ const TreeNode: React.FC<TreeNodeProps> = ({
             setIsModalOpen(true);
           }}
           className={s.addBtn}
-        ></button>
+        />
 
         {name !== "maria" && (
           <>
@@ -66,14 +66,14 @@ const TreeNode: React.FC<TreeNodeProps> = ({
                 onDeleteBtnClick(id);
               }}
               className={s.deleteBtn}
-            ></button>
+            />
 
             <button
               onClick={() => {
                 onUpdateBtnClick(id, name);
               }}
               className={s.editBtn}
-            ></button>
+            />
           </>
         )}
       </div>
