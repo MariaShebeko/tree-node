@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import s from "./AddNodeForm.module.css";
 
 interface IAddNodeForm {
   id: number;
@@ -33,10 +34,10 @@ export const AddNodeForm: React.FC<IAddNodeForm> = ({
   };
 
   return (
-    <div className="form-wrapper">
-      <form onSubmit={onFormSubmit} className="form">
-        <div className="input-wrapper">
-          <label htmlFor="name" className="label">
+    <div className={s.formWrapper}>
+      <form onSubmit={onFormSubmit} className={s.form}>
+        <div className={s.inputWrapper}>
+          <label htmlFor="name" className={s.label}>
             name
           </label>
           <input
@@ -49,13 +50,13 @@ export const AddNodeForm: React.FC<IAddNodeForm> = ({
           />
         </div>
 
-        <button type="submit" className="button">
-          {isEditing ? "Update " : "Add "}
-          node
-        </button>
+        <div className={s.buttonWrapper}>
+          <button type="submit" className={s.button}>
+            {isEditing ? "Update " : "Add "}
+            node
+          </button>
 
-        <div className="button-wrapper">
-          <button type="button" className="button" onClick={onClose}>
+          <button type="button" className={s.button} onClick={onClose}>
             Cancel
           </button>
         </div>

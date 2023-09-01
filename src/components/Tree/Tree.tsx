@@ -7,6 +7,7 @@ import {
   deleteNode,
   updateNode,
 } from "../../services/nodeApi";
+import s from "./Tree.module.css";
 
 type TreeData = TreeNodeData[];
 
@@ -38,7 +39,7 @@ const Tree: React.FC = () => {
   };
 
   return (
-    <div>
+    <div className={s.tree}>
       {treeData.map((node) => (
         <TreeNode
           key={node.id}

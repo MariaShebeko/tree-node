@@ -12,6 +12,8 @@
 }
 
 .treeLabel {
+  margin-left: 5px;
+  font-size: 20px;
   font-weight: bold;
 }
 
@@ -21,4 +23,34 @@
 
 button {
   margin-left: 5px;
+}
+
+.addBtn,
+.deleteBtn,
+.editBtn {
+  background: none;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1rem;
+  padding: 0.25rem 0.5rem;
+  transition: background-color 0.2s;
+}
+
+.addBtn:hover,
+.deleteBtn:hover,
+.editBtn:hover {
+  background-color: #f0f0f0;
+}
+
+.addBtn::before {
+  content: '➕';
+}
+
+.deleteBtn::before {
+  content: '❌';
+}
+
+.editBtn::before {
+  content: '✎';
 }
