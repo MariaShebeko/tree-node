@@ -18,8 +18,6 @@ export const AddNodeForm: React.FC<IAddNodeForm> = ({
   addNode,
   updateNode,
 }) => {
-  console.log("FORM RENDER");
-
   const [name, setName] = useState<string>(isEditing === true ? nodeName : "");
 
   const onFormSubmit = (event: React.FormEvent<HTMLFormElement>) => {
@@ -27,8 +25,9 @@ export const AddNodeForm: React.FC<IAddNodeForm> = ({
 
     if (!isEditing) {
       addNode(id, name);
+    } else {
+      updateNode(id, name);
     }
-    updateNode(id, name);
 
     onClose();
   };
