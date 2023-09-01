@@ -1,1 +1,79 @@
-/*  */
+/* src/components/Tree.css */
+.tree {
+  font-family: Arial, sans-serif;
+  margin: 1rem;
+  padding: 0;
+}
+
+.tree-node {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  position: relative;
+}
+
+.tree-node label {
+  display: flex;
+  align-items: center;
+  padding: 0.5rem;
+  cursor: pointer;
+}
+
+.tree-node label:hover {
+  background-color: #f0f0f0;
+}
+
+.tree-node .icon {
+  margin-right: 0.5rem;
+}
+
+.tree-node .label-text {
+  flex-grow: 1;
+  font-weight: bold;
+}
+
+.tree-node .controls {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.tree-node .add-button,
+.tree-node .delete-button,
+.tree-node .edit-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 1rem;
+  padding: 0.25rem 0.5rem;
+  transition: background-color 0.2s;
+}
+
+.tree-node .add-button:hover,
+.tree-node .delete-button:hover,
+.tree-node .edit-button:hover {
+  background-color: #f0f0f0;
+}
+
+.tree-node .add-button::before {
+  content: '➕';
+}
+
+.tree-node .delete-button::before {
+  content: '❌';
+}
+
+.tree-node .edit-button::before {
+  content: '✎';
+}
+
+.tree-node .child-nodes {
+  margin-left: 1rem;
+}
+
+/* Highlight the selected node */
+.tree-node.selected label {
+  background-color: #007bff;
+  color: #fff;
+}
+
+/* You can add more styles or customize the existing styles to match your design preferences */

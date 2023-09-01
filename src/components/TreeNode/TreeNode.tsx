@@ -44,7 +44,7 @@ const TreeNode: React.FC<TreeNodeProps> = ({
     <div>
       <div>
         <span
-          className={`${s.treeToggle}${isExpanded ? "expanded" : "collapsed"}`}
+          className={`${s.treeToggle} ${isExpanded ? "expanded" : "collapsed"}`}
           onClick={handleToggle}
         >
           {isExpanded ? "▼" : "►"}
@@ -56,9 +56,8 @@ const TreeNode: React.FC<TreeNodeProps> = ({
           onClick={() => {
             setIsModalOpen(true);
           }}
-        >
-          Add
-        </button>
+          className={s.addBtn}
+        ></button>
 
         {name !== "maria" && (
           <>
@@ -66,17 +65,15 @@ const TreeNode: React.FC<TreeNodeProps> = ({
               onClick={() => {
                 onDeleteBtnClick(id);
               }}
-            >
-              Delete
-            </button>
+              className={s.deleteBtn}
+            ></button>
 
             <button
               onClick={() => {
                 onUpdateBtnClick(id, name);
               }}
-            >
-              Edit
-            </button>
+              className={s.editBtn}
+            ></button>
           </>
         )}
       </div>
