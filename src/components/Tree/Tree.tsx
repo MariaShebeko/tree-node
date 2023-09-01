@@ -12,7 +12,6 @@ import s from "./Tree.module.css";
 type TreeData = TreeNodeData[];
 
 const Tree: React.FC = () => {
-  console.log("TREE RENDER");
   const [treeData, setTreeData] = useState<TreeData>([]);
 
   const fetchData = async () => {
