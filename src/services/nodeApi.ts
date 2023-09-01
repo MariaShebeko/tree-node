@@ -25,8 +25,10 @@ export const addNode = async (parentNodeId: number, nodeName: string) => {
     );
     successNotification(`Node with the name: ${nodeName} has been added.`);
     return response.data;
-  } catch (error) {
-    console.log("error", error);
+  } catch (error: any) {
+    if ((error.response.data.data = "Duplicate name")) {
+      errorNotification(`Node with the name: ${nodeName} already exists.`);
+    }
   }
 };
 
@@ -47,7 +49,9 @@ export const updateNode = async (nodeId: number, newNodeName: string) => {
       `https://test.vmarmysh.com/api.user.tree.node.rename?treeName=maria&nodeId=${nodeId}&newNodeName=${newNodeName}`
     );
     return response.data;
-  } catch (error) {
-    console.log("error", error);
+  } catch (error: any) {
+    if ((error.response.data.data = "Duplicate name")) {
+      errorNotification(`Node with the name: ${newNodeName} already exists.`);
+    }
   }
 };
